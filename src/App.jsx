@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
+import ShopContextProvider from "./contexts/ShopContextProvider";
 
 function App() {
 	const router = createBrowserRouter([
@@ -9,7 +10,11 @@ function App() {
 			element: <Home />,
 		},
 	]);
-	return <RouterProvider router={router} />;
+	return (
+		<ShopContextProvider>
+			<RouterProvider router={router} />;
+		</ShopContextProvider>
+	);
 }
 
 export default App;
