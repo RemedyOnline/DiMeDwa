@@ -1,13 +1,15 @@
 import HeroCarousel from "../components/HeroCarousel";
 import MainNavbar from "../components/MainNavbar";
+import ProductFetch from "../components/ProductFetch";
 
 const Home = () => {
-	return (
-		<div>
-			<MainNavbar />
-			<HeroCarousel />
-		</div>
-	);
+  return (
+    <div className="pb-48">
+      <MainNavbar />
+      <HeroCarousel />
+      <ProductFetch />
+    </div>
+  );
 };
 
 export default Home;
