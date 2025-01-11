@@ -1,59 +1,38 @@
+import { apiLogin } from "../services/auth";
 import { Facebook, Twitter } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { apiSignUp } from "../services/auth";
-import { PropTypes } from "prop-types";
 
-const SignUp = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [loading, setLoading] = useState(false);
+const Login = () => {
   const navigate = useNavigate();
-
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
     try {
       setLoading(true);
-
-      // preparing form data...
-      const formData = new FormData(event.target);
-
-      const avatar = formData.get("avatar");
-      const userName = formData.get("userName");
-      const email = formData.get("email");
-      const password = formData.get("password");
-      const phone = formData.get("phone");
-      const role = formData.get("role");
-      const businessName = formData.get("businessName");
-
-      // payload for the api
-      const payload = {
-        userName,
-        email,
-        password,
-        phone,
-        role: "vendor",
-        businessName,
-      };
-
-      // calling the registeration API
-      const response = await apiSignUp(payload);
+      const response = await apiLogin({ email, password });
       console.log(response.data);
 
-      // toast for successfully registeration..
-      toast.success("You've signed up successfully...");
+      toast.success("You've logged in successfully...");
 
       setTimeout(() => {
-        navigate("/login");
-      }, 2000); // automatically navigate to login page after 2secs...
+        navigate("/dashboard");
+      }, 2000);
+
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.accessToken);
+        console.log(response.data.accessToken);
+      }
     } catch (error) {
       console.log(error);
-      toast.error("Registeration failed. Please try again later...");
+      toast.error("Failed to login. Please try again...");
     } finally {
       setLoading(false);
     }
@@ -81,46 +60,20 @@ const SignUp = () => {
           </div>
           <div className="w-fit text-right">
             <h3 className="text-lg font-semibold text-theme-color md:text-xl lg:text-2xl">
-              Sign Up
+              Login
             </h3>
             <p className="text-sm">
-              Already have an account?{" "}
+              New Here?{" "}
               <Link
                 className="font-semibold text-theme-color underline hover:text-hoverBG"
-                to="/login"
+                to="/register"
               >
-                Login
+                Sign up
               </Link>
             </p>
           </div>
         </div>
         <div className="space-y-2">
-          <div className="flex flex-col gap-1">
-            <label htmlFor="avatar" className="text-sm font-medium">
-              Profile Picture
-            </label>
-            <input
-              required
-              type="file"
-              name="avatar"
-              id="avatar"
-              placeholder="Upload your avatar"
-              className="w-full rounded-md bg-inputBG px-3 py-1 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-1.5"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="userName" className="text-sm font-medium">
-              User Name
-            </label>
-            <input
-              required
-              type="text"
-              name="userName"
-              id="userName"
-              placeholder="Enter your User Name"
-              className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
-            />
-          </div>
           <div className="flex flex-col gap-1">
             <label htmlFor="email" className="text-sm font-medium">
               Email
@@ -131,99 +84,44 @@ const SignUp = () => {
               name="email"
               id="email"
               placeholder="Enter your email"
-              className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
+              className="w-full rounded-md bg-inputBG px-2 py-2 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-hoverBG"
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="text-sm font-medium">
-              Password
-            </label>
+            <div className="flex items-end justify-between">
+              <label htmlFor="password" className="text-sm font-medium">
+                Password
+              </label>
+              <Link
+                className="w-fit pt-1 text-sm font-semibold text-theme-color underline hover:text-hoverBG"
+                to=""
+              >
+                Forgot Password?
+              </Link>
+            </div>
             <input
               required
               type="password"
               name="password"
               id="password"
               placeholder="Enter your password"
-              className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
+              className="w-full rounded-md bg-inputBG px-2 py-2 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-hoverBG"
             />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="phone" className="text-sm font-medium">
-              Contact
-            </label>
-            <input
-              required
-              type="number"
-              name="phone"
-              id="phone"
-              placeholder="Enter your phone number"
-              className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="role" className="text-sm font-medium">
-              Role
-            </label>
-            <select
-              required
-              className="w-full rounded-md bg-inputBG px-2 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
-              value={selectedOption}
-              onChange={handleSelectChange}
-              name="role"
-              id="role"
-            >
-              <option value="">--Role--</option>
-              <option value="user">User</option>
-              <option value="vendor">Vendor</option>
-            </select>
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="businessName" className="text-sm font-medium">
-              Business Name
-            </label>
-            <input
-              required
-              type="text"
-              name="businessName"
-              id="businessName"
-              placeholder="Enter Business Name"
-              className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
-            />
-          </div>
-          <div className="flex gap-2 pt-1 text-sm">
-            <input
-              required
-              type="checkbox"
-              name="policy"
-              id="policy"
-              placeholder="Enter Business Name"
-              className="w-4 text-2xl outline-none"
-            />
-            <label htmlFor="policy">
-              You accept the{" "}
-              <span className="font-semibold text-theme-color underline">
-                privacy policy
-              </span>{" "}
-              and{" "}
-              <span className="font-semibold text-theme-color underline">
-                terms of use
-              </span>
-            </label>
           </div>
         </div>
         <div className="pb-1 pt-3">
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-theme-color px-2 py-2 text-white ring ring-inputRing transition-colors hover:bg-hoverBG md:py-3"
+            className="w-full rounded-lg bg-theme-color px-2 py-2.5 text-white ring ring-inputRing transition-colors hover:bg-[#0e345ade] hover:bg-hoverBG"
           >
-            {loading ? "Loading..." : "Sign Up"}
+            Login
           </button>
         </div>
         <div className="space-y-4">
           <div className="flex items-center justify-around">
             <hr className="w-1/4 bg-theme-color" />
-            <p className="items-center text-sm">or Sign Up using</p>
+            <p className="items-center text-sm">Or Login using</p>
             <hr className="w-1/4 bg-theme-color" />
           </div>
           <div className="flex justify-center gap-5">
@@ -268,4 +166,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
