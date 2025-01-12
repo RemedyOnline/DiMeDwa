@@ -2,7 +2,8 @@ import { Grid, Heart, HeartOff, List, Plus } from "lucide-react";
 import { useContext, useState } from "react";
 import PRODUCTS from "../constants/products";
 import { ShopContext } from "../contexts/ShopContextProvider";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import SectionHeading from "./SectionHeading";
 
 const ProductFetch = () => {
   const [favorited, setFavorited] = useState(false);
@@ -22,19 +23,17 @@ const ProductFetch = () => {
   return (
     <section className="mx-auto my-10 max-w-7xl px-3 sm:px-5 md:px-10">
       <div className="flex justify-between px-3 pb-4 pt-8">
-        <h2 className="text-xl font-bold uppercase md:text-2xl lg:text-3xl">
-          Top Selling Items
-        </h2>
-        <div className="flex items-center gap-1 md:gap-4">
+        <SectionHeading heading="Top Selling Items" />
+        <div className="flex items-center gap-1 md:gap-2">
           <Grid
             onClick={() => setGridView(true)}
-            className={`cursor-pointer text-xl hover:text-highlightText md:text-3xl ${
+            className={`cursor-pointer text-xl hover:text-hoverBG md:text-3xl ${
               gridView ? "" : "text-fadedText"
             }`}
           />
           <List
             onClick={() => setGridView(false)}
-            className={`cursor-pointer text-2xl hover:text-highlightText md:text-4xl ${
+            className={`cursor-pointer text-2xl hover:text-hoverBG md:text-4xl ${
               !gridView ? "" : "text-fadedText"
             }`}
           />
@@ -57,7 +56,7 @@ const ProductFetch = () => {
                 gridView
                   ? "item h-full w-full px-2 py-5"
                   : "flex w-full flex-col"
-              } relative border border-theme-color border-opacity-20 transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg`}
+              } relative border border-theme-color border-opacity-20 transition duration-300 ease-in-out hover:scale-105 hover:shadow-lg`}
             >
               <div
                 className={`${
@@ -118,7 +117,7 @@ const ProductFetch = () => {
                       } pt-0 text-base font-semibold md:pt-0 md:text-lg`}
                     >
                       <sup className="text-xs text-highlightText">GH₵</sup>
-                      {product.current_price}
+                      {product.current_price}.00
                     </p>
                     <p
                       className={`${
@@ -129,6 +128,7 @@ const ProductFetch = () => {
                     >
                       <span className="text-xs">GH₵</span>
                       {product.previous_price}
+                      <sub>.00</sub>
                     </p>
                   </div>
                 </div>
@@ -136,9 +136,9 @@ const ProductFetch = () => {
               <button
                 className={`${
                   gridView
-                    ? "text-white hover:bg-green-800 md:bottom-4 md:right-4"
+                    ? "text-white md:bottom-4 md:right-4"
                     : "text-white md:bottom-4 md:right-4"
-                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-2 text-xs md:text-sm`}
+                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:p-2 md:text-sm`}
                 onClick={() => handleAddToCart(product.id)}
               >
                 Add to Cart{" "}
@@ -151,7 +151,6 @@ const ProductFetch = () => {
           </div>
         ))}
       </div>
-      <ToastContainer />
     </section>
   );
 };

@@ -1,9 +1,8 @@
-import { Facebook, Twitter } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { apiSignUp } from "../services/auth";
-import { PropTypes } from "prop-types";
+// import { PropTypes } from "prop-types";
 
 const SignUp = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -197,15 +196,15 @@ const SignUp = () => {
               name="policy"
               id="policy"
               placeholder="Enter Business Name"
-              className="w-4 text-2xl outline-none"
+              className="w-4 cursor-pointer accent-theme-color hover:accent-hoverBG"
             />
             <label htmlFor="policy">
               You accept the{" "}
-              <span className="font-semibold text-theme-color underline">
+              <span className="cursor-pointer font-semibold text-theme-color underline hover:text-hoverBG">
                 privacy policy
               </span>{" "}
               and{" "}
-              <span className="font-semibold text-theme-color underline">
+              <span className="cursor-pointer font-semibold text-theme-color underline hover:text-hoverBG">
                 terms of use
               </span>
             </label>
@@ -287,5 +286,10 @@ const SignUp = () => {
     </section>
   );
 };
+
+// SignUp.proTypes = {
+//   avatar: PropTypes.string,
+//   role: PropTypes.string,
+// };
 
 export default SignUp;
