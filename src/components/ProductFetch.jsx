@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const ProductFetch = () => {
   const [favorited, setFavorited] = useState(false);
-  const [gridView, setGridView] = useState(false);
+  const [gridView, setGridView] = useState(true);
   const { addToCart, cartItems } = useContext(ShopContext);
 
   const handleAddToCart = (productId) => {
@@ -28,13 +28,13 @@ const ProductFetch = () => {
         <div className="flex items-center gap-1 md:gap-4">
           <Grid
             onClick={() => setGridView(true)}
-            className={`hover:text-highlightText cursor-pointer text-xl md:text-3xl ${
+            className={`cursor-pointer text-xl hover:text-highlightText md:text-3xl ${
               gridView ? "" : "text-fadedText"
             }`}
           />
           <List
             onClick={() => setGridView(false)}
-            className={`hover:text-highlightText cursor-pointer text-2xl md:text-4xl ${
+            className={`cursor-pointer text-2xl hover:text-highlightText md:text-4xl ${
               !gridView ? "" : "text-fadedText"
             }`}
           />
@@ -117,7 +117,7 @@ const ProductFetch = () => {
                         gridView ? "" : "lg:text-lg"
                       } pt-0 text-base font-semibold md:pt-0 md:text-lg`}
                     >
-                      <sup className="text-highlightText text-xs">GH₵</sup>
+                      <sup className="text-xs text-highlightText">GH₵</sup>
                       {product.current_price}
                     </p>
                     <p

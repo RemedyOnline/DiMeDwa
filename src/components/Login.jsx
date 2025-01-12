@@ -113,7 +113,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-theme-color px-2 py-2.5 text-white ring ring-inputRing transition-colors hover:bg-[#0e345ade] hover:bg-hoverBG"
+            className={`${loading ? "bg-gray-400" : "bg-theme-color hover:bg-hoverBG"} w-full rounded-lg px-2 py-2.5 text-white ring ring-inputRing transition-colors`}
           >
             Login
           </button>
@@ -121,7 +121,7 @@ const Login = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-around">
             <hr className="w-1/4 bg-theme-color" />
-            <p className="items-center text-sm">Or Login using</p>
+            <p className="items-center text-sm">or Login using</p>
             <hr className="w-1/4 bg-theme-color" />
           </div>
           <div className="flex justify-center gap-5">
@@ -153,10 +153,30 @@ const Login = () => {
               </svg>
             </button>
             <button className="border border-[#0E345A20] px-3 py-3 transition-colors duration-300 ease-in-out hover:border-hoverBG hover:text-hoverBG">
-              <Facebook className="text-2xl" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="icon icon-tabler icons-tabler-filled icon-tabler-brand-facebook"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 2a1 1 0 0 1 .993 .883l.007 .117v4a1 1 0 0 1 -.883 .993l-.117 .007h-3v1h3a1 1 0 0 1 .991 1.131l-.02 .112l-1 4a1 1 0 0 1 -.858 .75l-.113 .007h-2v6a1 1 0 0 1 -.883 .993l-.117 .007h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-6h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-4a1 1 0 0 1 .883 -.993l.117 -.007h2v-1a6 6 0 0 1 5.775 -5.996l.225 -.004h3z" />
+              </svg>
             </button>
             <button className="border border-[#0E345A20] px-3 py-3 transition-colors duration-300 ease-in-out hover:border-hoverBG hover:text-hoverBG">
-              <Twitter className="text-2xl" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="icon icon-tabler icons-tabler-filled icon-tabler-brand-x"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8.267 3a1 1 0 0 1 .73 .317l.076 .092l4.274 5.828l5.946 -5.944a1 1 0 0 1 1.497 1.32l-.083 .094l-6.163 6.162l6.262 8.54a1 1 0 0 1 -.697 1.585l-.109 .006h-4.267a1 1 0 0 1 -.73 -.317l-.076 -.092l-4.276 -5.829l-5.944 5.945a1 1 0 0 1 -1.497 -1.32l.083 -.094l6.161 -6.163l-6.26 -8.539a1 1 0 0 1 .697 -1.585l.109 -.006h4.267z" />
+              </svg>
             </button>
           </div>
         </div>

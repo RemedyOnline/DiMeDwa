@@ -1,3 +1,4 @@
+import ApiProductFetch from "../components/ApiProductFetch";
 import HeroCarousel from "../components/HeroCarousel";
 import MainNavbar from "../components/MainNavbar";
 import ProductFetch from "../components/ProductFetch";
@@ -8,6 +9,7 @@ const Home = () => {
       <MainNavbar />
       <HeroCarousel />
       <ProductFetch />
+      <ApiProductFetch />
     </div>
   );
 };
