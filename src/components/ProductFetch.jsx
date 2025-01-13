@@ -138,7 +138,7 @@ const ProductFetch = () => {
                   gridView
                     ? "text-white md:bottom-4 md:right-4"
                     : "text-white md:bottom-4 md:right-4"
-                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:p-2 md:text-sm`}
+                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
                 onClick={() => handleAddToCart(product.id)}
               >
                 Add to Cart{" "}

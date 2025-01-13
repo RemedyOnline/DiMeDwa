@@ -122,10 +122,10 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 flex flex-col justify-between border-t border-theme-color border-opacity-40 pt-6 text-sm md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-center border-t border-theme-color border-opacity-40 pt-6 text-sm sm:flex-row sm:justify-between">
           <p>&copy; 2024 Di Me Dwa.</p>
           <p>All rights reserved.</p>
-          <div className="mt-4 flex space-x-6 md:mt-0">
+          <div className="mt-4 flex space-x-6 sm:mt-0">
             <Link to="#" className="text-sm hover:underline md:text-base">
               Facebook
             </Link>

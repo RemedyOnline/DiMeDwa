@@ -1,5 +1,6 @@
 import { Heart, HeartOff, Plus } from "lucide-react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ApiProductItem = ({
   id,
@@ -32,7 +33,7 @@ const ApiProductItem = ({
               gridView ? "items-start space-y-1" : "flex items-start gap-2"
             } `}
           >
-            <div className="relative">
+            <Link to={`/product/${id}`} className="relative">
               <img
                 src={`https://savefiles.org/${images}?shareable_link=440`}
                 alt={productName}
@@ -40,10 +41,13 @@ const ApiProductItem = ({
                   gridView
                     ? "mx-auto sm:h-[150px] sm:w-[160px] md:h-[180px] md:w-[180px]"
                     : "p-2 md:h-[160px] md:w-[160px] lg:h-[160px] lg:w-[200px]"
-                } h-[130px] w-[130px]`}
+                } h-[130px] w-[130px] cursor-pointer`}
               />
               <span
-                onClick={handleFavorited}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleFavorited;
+                }}
                 className="absolute right-2 top-0 rounded-full bg-slate-100 p-2 text-red-600 shadow-md hover:cursor-pointer hover:bg-slate-200"
               >
                 {!favorited ? <Heart size={16} /> : <HeartOff size={16} />}
@@ -51,7 +55,7 @@ const ApiProductItem = ({
               <span className="absolute bottom-2 right-2 bg-yellow-200 px-2 py-1 text-xs text-yellow-700 md:text-sm lg:text-base">
                 -{discountPercentage}%
               </span>
-            </div>
+            </Link>
             <div
               className={`${
                 gridView
@@ -101,7 +105,7 @@ const ApiProductItem = ({
               gridView
                 ? "text-white md:bottom-4 md:right-4"
                 : "text-white md:bottom-4 md:right-4"
-            } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:p-2 md:text-sm`}
+            } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
             onClick={() => handleAddToCart(id)}
           >
             Add to Cart{" "}
