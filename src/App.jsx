@@ -8,6 +8,8 @@ import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductDetails from "./pages/ProductDetails";
+import ErrorBoundary from "./components/ErrorBoundary";
+import EditProduct from "./pages/EditProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -28,8 +30,16 @@ function App() {
       element: <Login />,
     },
     {
-      path: "/product/:id",
-      element: <ProductDetails />,
+      path: "/products/:id",
+      element: (
+        <ErrorBoundary>
+          <ProductDetails />
+        </ErrorBoundary>
+      ),
+    },
+    {
+      path: "/products/edit/:id",
+      element: <EditProduct />,
     },
   ]);
 

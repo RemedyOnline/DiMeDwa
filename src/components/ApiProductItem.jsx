@@ -1,6 +1,5 @@
 import { Heart, HeartOff, Plus } from "lucide-react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 const ApiProductItem = ({
   id,
@@ -33,7 +32,7 @@ const ApiProductItem = ({
               gridView ? "items-start space-y-1" : "flex items-start gap-2"
             } `}
           >
-            <Link to={`/product/${id}`} className="relative">
+            <div className="relative">
               <img
                 src={`https://savefiles.org/${images}?shareable_link=440`}
                 alt={productName}
@@ -41,7 +40,7 @@ const ApiProductItem = ({
                   gridView
                     ? "mx-auto sm:h-[150px] sm:w-[160px] md:h-[180px] md:w-[180px]"
                     : "p-2 md:h-[160px] md:w-[160px] lg:h-[160px] lg:w-[200px]"
-                } h-[130px] w-[130px] cursor-pointer`}
+                } h-[130px] w-[130px]`}
               />
               <span
                 onClick={(e) => {
@@ -53,9 +52,14 @@ const ApiProductItem = ({
                 {!favorited ? <Heart size={16} /> : <HeartOff size={16} />}
               </span>
               <span className="absolute bottom-2 right-2 bg-yellow-200 px-2 py-1 text-xs text-yellow-700 md:text-sm lg:text-base">
-                -{discountPercentage}%
+                -
+                {new Intl.NumberFormat("en-US", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }).format(discountPercentage)}
+                %
               </span>
-            </Link>
+            </div>
             <div
               className={`${
                 gridView
@@ -121,6 +125,7 @@ const ApiProductItem = ({
 };
 
 ApiProductItem.propTypes = {
+  images: PropTypes.string,
   id: PropTypes.string,
   productName: PropTypes.string,
   category: PropTypes.string,

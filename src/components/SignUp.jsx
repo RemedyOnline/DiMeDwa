@@ -2,12 +2,18 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { apiSignUp } from "../services/auth";
+import { Eye, EyeClosed } from "lucide-react";
 // import { PropTypes } from "prop-types";
 
 const SignUp = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setIsVisible((prevState) => !prevState);
+  };
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -133,18 +139,29 @@ const SignUp = () => {
               className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
             />
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="relative flex flex-col gap-1">
             <label htmlFor="password" className="text-sm font-medium">
               Password
             </label>
             <input
               required
-              type="password"
+              type={isVisible ? "text" : "password"}
               name="password"
+              aria-label="Password"
               id="password"
               placeholder="Enter your password"
               className="w-full rounded-md bg-inputBG px-3 py-1.5 ring ring-inputRing focus:outline-none focus:ring-2 focus:ring-highlightText md:py-2"
             />
+            <button
+              type="button"
+              aria-label={isVisible ? "Hide Password" : "Show Password"}
+              aria-pressed={isVisible}
+              aria-controls="password"
+              onClick={togglePasswordVisibility}
+              className="hover: absolute right-3 top-1/2 translate-y-1 text-hoverBG hover:text-theme-color"
+            >
+              {isVisible ? <Eye size={20} /> : <EyeClosed size={20} />}
+            </button>
           </div>
           <div className="flex flex-col gap-1">
             <label htmlFor="phone" className="text-sm font-medium">
@@ -210,7 +227,7 @@ const SignUp = () => {
             </label>
           </div>
         </div>
-        <div className="pb-1 pt-3">
+        <div className="">
           <button
             type="submit"
             disabled={loading}

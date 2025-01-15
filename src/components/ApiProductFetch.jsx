@@ -5,6 +5,7 @@ import SectionHeading from "./SectionHeading";
 import ApiProductItem from "./ApiProductItem";
 import { toast } from "react-toastify";
 import { ShopContext } from "../contexts/ShopContextProvider";
+import { Link } from "react-router-dom";
 
 const ApiProductFetch = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -89,25 +90,31 @@ const ApiProductFetch = () => {
             : "flex flex-col md:grid md:grid-cols-2"
         } gap-4`}
       >
-        {apiProducts.map((product, index) => (
-          <ApiProductItem
-            key={product.id || index}
-            id={product.id}
-            images={product.images}
-            productName={product.productName}
-            price={product.price}
-            category={product.category}
-            discountPercentage={product.discountPercentage}
-            description={product.description}
-            discountedPrice={product.discountedPrice}
-            avatar={product.avatar}
-            index={index}
-            favorited={favorited[product.id]}
-            gridView={gridView}
-            cartItems={cartItems}
-            handleAddToCart={() => handleAddToCart(product.id)}
-          />
-        ))}
+        {apiProducts.map((product, index) => {
+          console.log(`${index}: ${product.images}`);
+          return (
+            <Link to={`/products/${product.id}`} key={product.id || index}>
+              <ApiProductItem
+                key={product.id || index}
+                id={product.id}
+                images={product.images}
+                productName={product.productName}
+                price={product.price}
+                category={product.category}
+                discountPercentage={product.discountPercentage}
+                description={product.description}
+                discountedPrice={product.discountedPrice}
+                avatar={product.avatar}
+                index={index}
+                favorited={favorited[product.id]}
+                gridView={gridView}
+                cartItems={cartItems}
+                handleAddToCart={() => handleAddToCart(product.id)}
+                handleFavorited={() => handleFavorited(product.id)}
+              />
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

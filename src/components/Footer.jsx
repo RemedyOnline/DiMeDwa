@@ -20,7 +20,7 @@ const Footer = () => {
                 </span>
               </Link>
             </div>
-            <p className="mt-2 text-sm italic md:mt-4">
+            <p className="mt-2 text-sm italic md:mt-4 md:text-base">
               Your one-stop destination for premium shopping experiences. We
               bring convenience, quality, and reliability to your doorstep.
             </p>
