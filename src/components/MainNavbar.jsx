@@ -1,12 +1,9 @@
 import { ShoppingCart, User } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const MainNavbar = ({ totalAmount, getTotalCartAmount }) => {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="fixed left-0 top-0 z-10 flex w-full justify-between border-b border-green-300 bg-highlight px-4 py-2 shadow-lg sm:px-6 lg:px-8 xl:px-10">
+    <header className="fixed left-0 top-0 z-10 flex w-screen justify-between border-b border-green-300 bg-highlight px-4 py-2 shadow-md sm:px-6 lg:px-8 xl:px-10">
       <div className="group content-center items-center">
         <Link to="/">
           <span className="content-center bg-theme-color px-2 py-1 text-center text-sm font-bold text-white group-hover:bg-hoverBG md:px-3 md:py-2 md:text-base lg:text-lg">
@@ -32,12 +29,12 @@ const MainNavbar = ({ totalAmount, getTotalCartAmount }) => {
         </Link>
         <Link
           to="/cart"
-          className="flex items-center gap-0 text-nowrap rounded-full border-2 border-theme-color px-1 py-1 text-center hover:border-hoverBG hover:text-hoverBG md:gap-1 md:px-2 md:py-2 lg:px-2.5 lg:py-2.5"
+          className="flex h-7 w-7 items-center gap-0 text-nowrap rounded-full border-2 border-theme-color px-1 py-1 text-center hover:border-hoverBG hover:text-hoverBG md:h-9 md:w-9 md:gap-1 md:px-2 md:py-2 lg:h-10 lg:w-10 lg:px-2.5 lg:py-2.5"
         >
           <div className="relative">
             <ShoppingCart
               name="cart-outline"
-              className="my-auto h-4 w-4 align-middle"
+              className="my-auto -ml-[1px] h-4 w-4 align-middle md:-ml-[2px]"
             />
             <span
               className={`${

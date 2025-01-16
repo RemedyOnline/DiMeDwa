@@ -133,9 +133,9 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`${loading ? "bg-gray-400" : "bg-theme-color hover:bg-hoverBG"} w-full rounded-lg px-2 py-2.5 text-white ring ring-inputRing transition-colors`}
+            className={`${loading ? "cursor-not-allowed bg-gray-400" : "bg-theme-color hover:bg-hoverBG"} w-full rounded-lg px-2 py-2.5 text-white ring ring-inputRing transition-colors`}
           >
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
         </div>
         <div className="space-y-4">

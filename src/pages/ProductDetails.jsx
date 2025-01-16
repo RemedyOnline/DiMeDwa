@@ -113,7 +113,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-4 pb-4 pt-20">
+    <section className="mx-auto max-w-7xl text-wrap px-4">
       <MainNavbar />
       {/* Product Image and Details */}
       <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-5">
@@ -171,7 +171,7 @@ const ProductDetails = () => {
             </div>
             <div className="flex w-1/3 flex-col gap-5">
               <button
-                onClick={() => navigate(`/products/edit/${productID}`)} // Redirect to edit page
+                onClick={() => navigate(`/dashboard/edit/${productID}`)} // Redirect to edit page
                 className="flex items-center justify-center gap-2 rounded-lg bg-theme-color py-2 text-white hover:bg-hoverBG"
               >
                 <span>Edit</span>

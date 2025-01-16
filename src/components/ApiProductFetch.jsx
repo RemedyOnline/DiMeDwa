@@ -86,14 +86,14 @@ const ApiProductFetch = () => {
       <div
         className={`entireSpace ${
           gridView
-            ? "grid grid-cols-2 items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            ? "grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             : "flex flex-col md:grid md:grid-cols-2"
         } gap-4`}
       >
         {apiProducts.map((product, index) => {
           console.log(`${index}: ${product.images}`);
           return (
-            <Link to={`/products/${product.id}`} key={product.id || index}>
+            <Link to={`/dashboard/${product.id}`} key={product.id || index}>
               <ApiProductItem
                 key={product.id || index}
                 id={product.id}

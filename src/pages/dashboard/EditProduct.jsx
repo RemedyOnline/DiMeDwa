@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { apiEditProduct, apiGetOneProduct } from "../services/products";
-import { Eye, EyeClosed } from "lucide-react";
+import { apiEditProduct, apiGetOneProduct } from "../../services/products";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -10,7 +9,6 @@ const EditProduct = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [isVisible, setIsVisible] = useState(true);
   const [initialLoad, setinitialLoad] = useState(true);
 
   const [formData, setFormData] = useState({
@@ -77,7 +75,7 @@ const EditProduct = () => {
 
       setMessage("Product updated successfully!");
       setTimeout(() => {
-        navigate(`/products/${id}`);
+        navigate(`/dashboard/${id}`);
       }, 2000);
     } catch (error) {
       setError(
@@ -104,7 +102,7 @@ const EditProduct = () => {
     <section className="flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="my-5 w-full max-w-md space-y-5 bg-highlight p-4 shadow-md md:p-6"
+        className="w-full max-w-md space-y-5 bg-highlight p-4 shadow-md md:p-6"
       >
         <div className="flex flex-col items-center space-y-2">
           <h2 className="text-2xl font-bold">Edit Product</h2>
@@ -249,7 +247,7 @@ const EditProduct = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`${loading ? "bg-gray-400" : "bg-theme-color hover:bg-hoverBG"} w-full rounded-lg px-2 py-2.5 text-white ring ring-inputRing transition-colors`}
+            className={`${loading ? "cursor-not-allowed bg-gray-400" : "bg-theme-color hover:bg-hoverBG"} w-full rounded-lg px-2 py-2.5 text-white ring ring-inputRing transition-colors`}
           >
             {loading ? "Loading..." : "Update Product"}
           </button>

@@ -79,7 +79,7 @@ const ApiProductItem = ({
                   gridView ? "mx-auto" : ""
                 } w-fit border border-theme-color border-opacity-20 p-1 text-xs text-gray-600 lg:text-sm`}
               >
-                {category}
+                {category.charAt(0).toUpperCase() + category.slice(1)}
               </p>
               <div
                 className={`${gridView ? "mx-auto flex items-center justify-start gap-2 pb-6 md:pb-6" : ""}`}
@@ -109,7 +109,7 @@ const ApiProductItem = ({
               gridView
                 ? "text-white md:bottom-4 md:right-4"
                 : "text-white md:bottom-4 md:right-4"
-            } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
+            } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color px-2 py-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
             onClick={() => handleAddToCart(id)}
           >
             Add to Cart{" "}

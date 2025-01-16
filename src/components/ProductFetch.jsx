@@ -42,7 +42,7 @@ const ProductFetch = () => {
       <div
         className={`entireSpace ${
           gridView
-            ? "grid grid-cols-2 items-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            ? "grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             : "flex flex-col md:grid md:grid-cols-2"
         } gap-4`}
       >
@@ -138,7 +138,7 @@ const ProductFetch = () => {
                   gridView
                     ? "text-white md:bottom-4 md:right-4"
                     : "text-white md:bottom-4 md:right-4"
-                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color p-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
+                } absolute bottom-2 right-2 flex items-center justify-center gap-1 rounded-md bg-theme-color px-2 py-1 text-xs hover:bg-hoverBG md:px-2 md:py-1 md:text-sm`}
                 onClick={() => handleAddToCart(product.id)}
               >
                 Add to Cart{" "}

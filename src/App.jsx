@@ -9,7 +9,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductDetails from "./pages/ProductDetails";
 import ErrorBoundary from "./components/ErrorBoundary";
-import EditProduct from "./pages/EditProduct";
+import EditProduct from "./pages/dashboard/EditProduct";
+import MainDashboard from "./layouts/MainDashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Inventory from "./pages/dashboard/Inventory";
+import AddProduct from "./pages/dashboard/AddProduct";
+import Settings from "./pages/dashboard/Settings";
 
 function App() {
   const router = createBrowserRouter([
@@ -30,16 +35,38 @@ function App() {
       element: <Login />,
     },
     {
-      path: "/products/:id",
-      element: (
-        <ErrorBoundary>
-          <ProductDetails />
-        </ErrorBoundary>
-      ),
-    },
-    {
-      path: "/products/edit/:id",
-      element: <EditProduct />,
+      path: "/dashboard",
+      element: <MainDashboard />,
+      children: [
+        {
+          index: true,
+          element: <Dashboard />,
+        },
+        {
+          path: "inventory",
+          element: <Inventory />,
+        },
+        {
+          path: "/dashboard/:id",
+          element: (
+            <ErrorBoundary>
+              <ProductDetails />
+            </ErrorBoundary>
+          ),
+        },
+        {
+          path: "/dashboard/edit/:id",
+          element: <EditProduct />,
+        },
+        {
+          path: "addProduct",
+          element: <AddProduct />,
+        },
+        {
+          path: "settings",
+          element: <Settings />,
+        },
+      ],
     },
   ]);
 
