@@ -15,6 +15,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Inventory from "./pages/dashboard/Inventory";
 import AddProduct from "./pages/dashboard/AddProduct";
 import Settings from "./pages/dashboard/Settings";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -70,7 +71,7 @@ function App() {
     },
     {
       path: "*",
-      element: <Home />,
+      element: <NotFound />,
     },
   ]);
 
