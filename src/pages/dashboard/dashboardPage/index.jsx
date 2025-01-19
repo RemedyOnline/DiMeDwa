@@ -27,7 +27,7 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        <div className="bg-purple-200 md:col-span-2">
+        <div className="md:col-span-2">
           <UserEvent />
         </div>
       </div>
