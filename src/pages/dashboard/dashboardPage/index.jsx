@@ -14,15 +14,15 @@ const DashboardPage = () => {
               <BusinessOverview />
             </div>
             <div className="md:col-span-4 md:grid">
-              {/* <SalesByCategory /> */}
+              <SalesByCategory />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:pr-4">
             <div className="col-span-6 md:col-span-3 md:grid">
-              {/* <MostViewedProduct /> */}
+              <MostViewedProduct />
             </div>
             <div className="col-span-6 md:col-span-3 md:grid">
-              {/* <MonthlySales /> */}
+              <MonthlySales />
             </div>
           </div>
         </div>
