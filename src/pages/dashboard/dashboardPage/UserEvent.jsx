@@ -39,7 +39,7 @@ const Events = [
 
 const UserEvent = () => {
   return (
-    <section className="h-full w-full space-y-2 pl-4 md:flex md:justify-start lg:flex-col">
+    <section className="h-full w-full space-y-3 pl-4 md:flex md:justify-start lg:flex-col">
       <div>
         <div className="flex h-full w-full items-center gap-2 rounded-lg bg-white p-3">
           <img src={guy1} alt="userImage" className="h-14 w-14 rounded-full" />
