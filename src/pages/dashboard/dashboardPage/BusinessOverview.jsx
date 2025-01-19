@@ -9,8 +9,7 @@ const BusinessOverview = () => {
       </h2>
       <div className="space-y-2 p-2">
         {/* Card */}
-        {/* flex items-start justify-end gap-1 rounded-lg bg-inputBG p-1 md:gap-3 */}
-        <div className="bg-bgColor md:pl flex items-start gap-1 rounded-lg p-2 md:gap-2 lg:pl-10 2xl:pl-24">
+        <div className="bg-bgColor md:pl flex items-start gap-3 rounded-lg p-2 pl-4 lg:pl-10 2xl:pl-24">
           <div className="pt-1.5">
             <User size={20} />
           </div>
@@ -25,7 +24,7 @@ const BusinessOverview = () => {
           </div>
         </div>
         {/* Card */}
-        <div className="bg-bgColor md:pl flex items-start gap-1 rounded-lg p-2 md:gap-2 lg:pl-10 2xl:pl-24">
+        <div className="bg-bgColor md:pl flex items-start gap-3 rounded-lg p-2 pl-4 lg:pl-10 2xl:pl-24">
           <div className="pt-1.5">
             <ChartCandlestickIcon size={20} />
           </div>
@@ -38,7 +37,7 @@ const BusinessOverview = () => {
           </div>
         </div>
         {/* Card */}
-        <div className="bg-bgColor md:pl flex items-start gap-1 rounded-lg p-2 md:gap-2 lg:pl-10 2xl:pl-24">
+        <div className="bg-bgColor md:pl flex items-start gap-3 rounded-lg p-2 pl-4 lg:pl-10 2xl:pl-24">
           <div className="pt-1.5">
             <Eye size={20} />
           </div>
@@ -53,7 +52,7 @@ const BusinessOverview = () => {
           </div>
         </div>
         {/* Card */}
-        <div className="bg-bgColor md:pl flex items-start gap-1 rounded-lg p-2 md:gap-2 lg:pl-10 2xl:pl-24">
+        <div className="bg-bgColor md:pl flex items-start gap-3 rounded-lg p-2 pl-4 lg:pl-10 2xl:pl-24">
           <div className="pt-1.5">
             <img src={cashIcon} alt="cash-icon" className="h-5 w-5" />
           </div>
@@ -67,7 +66,7 @@ const BusinessOverview = () => {
           </div>
         </div>
         {/* Card */}
-        <div className="bg-bgColor md:pl flex items-start gap-1 rounded-lg p-2 md:gap-2 lg:pl-10 2xl:pl-24">
+        <div className="bg-bgColor md:pl flex items-start gap-3 rounded-lg p-2 pl-4 lg:pl-10 2xl:pl-24">
           <div className="pt-1.5">
             <Truck size={20} />
           </div>
