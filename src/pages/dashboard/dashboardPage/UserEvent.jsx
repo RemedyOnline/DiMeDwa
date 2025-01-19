@@ -1,4 +1,9 @@
-import { Calendar, ChartBar, ChartBarIcon, Goal, Settings } from "lucide-react";
+import {
+  CalendarRange,
+  ChartNoAxesCombined,
+  Goal,
+  Settings,
+} from "lucide-react";
 import guy1 from "../../../assets/img/guy1.png";
 
 const Events = [
@@ -85,11 +90,11 @@ const UserEvent = () => {
                 <span className="text-center font-medium">Goals</span>
               </p>
               <p className="bg-bgColor flex gap-5 rounded-lg p-2">
-                <Calendar />
+                <CalendarRange />
                 <span className="text-center font-medium">Plans</span>
               </p>
               <p className="bg-bgColor flex gap-5 rounded-lg p-2">
-                <ChartBarIcon />
+                <ChartNoAxesCombined />
                 <span className="text-center font-medium">Stat</span>
               </p>
               <p className="bg-bgColor flex gap-5 rounded-lg p-2">
