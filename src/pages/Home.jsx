@@ -11,8 +11,10 @@ const Home = () => {
     <div>
       <MainNavbar />
       <HeroCarousel />
-      <ProductFetch />
-      <ApiProductFetch />
+      <div className="px-3 sm:px-5">
+        <ProductFetch />
+        <ApiProductFetch />
+      </div>
       <CategoriesSection />
       <ContactSection />
       <Footer />

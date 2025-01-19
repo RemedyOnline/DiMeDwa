@@ -7,7 +7,7 @@ const ApiProductItem = ({
   category,
   images,
   discountPercentage,
-  discountedPrice,
+  discountPrice,
   handleAddToCart,
   favorited,
   handleFavorited,
@@ -69,37 +69,35 @@ const ApiProductItem = ({
             >
               <p
                 className={`${
-                  gridView ? "" : "lg:text-lg"
-                } text-base font-semibold md:text-base`}
+                  gridView ? "overflow-hidden" : "lg:text-lg"
+                } text-sm font-semibold md:text-base`}
               >
                 {productName}
               </p>
               <p
                 className={`${
                   gridView ? "mx-auto" : ""
-                } w-fit border border-theme-color border-opacity-20 p-1 text-xs text-gray-600 lg:text-sm`}
+                } w-fit border border-theme-color border-opacity-20 p-1 text-xs text-gray-500 lg:text-sm`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </p>
               <div
-                className={`${gridView ? "mx-auto flex items-center justify-start gap-2 pb-6 md:pb-6" : ""}`}
+                className={`${gridView ? "flex-col gap-0" : "gap-2"} mx-auto flex items-center justify-start pb-6 md:pb-6`}
               >
                 <p
                   className={`${
                     gridView ? "" : "lg:text-lg"
-                  } pt-0 text-base font-semibold md:pt-0 md:text-lg`}
+                  } text-sm font-semibold md:text-base`}
                 >
                   <sup className="text-xs text-highlightText">GH₵</sup>
                   {price}.00
                 </p>
                 <p
                   className={`${
-                    gridView ? "text-base lg:text-sm" : "text-base lg:text-base"
-                  } flex items-center text-gray-400 line-through`}
+                    gridView ? "" : "lg:text-sm"
+                  } flex items-center text-xs text-gray-400 line-through`}
                 >
-                  <span className="text-xs">GH₵</span>
-                  {discountedPrice}
-                  <sub>.00</sub>
+                  GH₵{discountPrice}.00
                 </p>
               </div>
             </div>
@@ -131,7 +129,7 @@ ApiProductItem.propTypes = {
   category: PropTypes.string,
   price: PropTypes.number,
   discountPercentage: PropTypes.number,
-  discountedPrice: PropTypes.number,
+  discountPrice: PropTypes.number,
   index: PropTypes.number,
   gridView: PropTypes.bool.isRequired,
   cartItems: PropTypes.object,

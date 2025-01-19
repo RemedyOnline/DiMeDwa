@@ -171,7 +171,9 @@ const ProductDetails = () => {
             </div>
             <div className="flex w-1/3 flex-col gap-5">
               <button
-                onClick={() => navigate(`/dashboard/edit/${productID}`)} // Redirect to edit page
+                onClick={() =>
+                  navigate(`/dashboard/inventory/edit/${productID}`)
+                } // Redirect to edit page
                 className="flex items-center justify-center gap-2 rounded-lg bg-theme-color py-2 text-white hover:bg-hoverBG"
               >
                 <span>Edit</span>

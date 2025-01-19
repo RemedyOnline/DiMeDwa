@@ -21,8 +21,8 @@ const ProductFetch = () => {
   };
 
   return (
-    <section className="mx-auto my-10 max-w-7xl px-3 sm:px-5 md:px-10">
-      <div className="flex justify-between px-3 pb-4 pt-8">
+    <section className="mx-auto my-10 max-w-7xl md:px-10">
+      <div className="flex justify-between pb-4 pt-8">
         <SectionHeading heading="Top Selling Items" />
         <div className="flex items-center gap-1 md:gap-2">
           <Grid
@@ -42,7 +42,7 @@ const ProductFetch = () => {
       <div
         className={`entireSpace ${
           gridView
-            ? "grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+            ? "grid grid-cols-2 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             : "flex flex-col md:grid md:grid-cols-2"
         } gap-4`}
       >

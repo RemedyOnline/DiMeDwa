@@ -28,32 +28,28 @@ const ApiProductFetch = () => {
   };
 
   const getProducts = useCallback(async () => {
-    setLoading(false);
-    const request = await apiGetProducts({
-      productName: { $regex: searchValue },
-    });
+    try {
+      setLoading(true);
+      const request = await apiGetProducts({
+        productName: { $regex: searchValue },
+      });
 
-    const response = await request.data;
-    setApiProducts(response);
-    console.log("API Response: ", response);
+      const response = await request.data;
+      setApiProducts(response);
+      console.log("API Response: ", response);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
   }, [searchValue]);
 
   useEffect(() => {
     getProducts();
   }, [getProducts]);
 
-  if (loading) {
-    return (
-      <div className="mx-auto my-auto flex h-screen w-screen items-center justify-center">
-        <h2 className="font-mono text-2xl font-bold text-theme-color">
-          Loading...
-        </h2>
-      </div>
-    );
-  }
-
   return (
-    <section className="mx-auto my-2 max-w-7xl px-3 sm:px-5 md:px-10">
+    <section className="mx-auto my-2 max-w-7xl md:px-10">
       <div
         className={`sticky top-2 z-20 mx-auto flex h-fit w-[110px] items-center rounded-full bg-theme-color px-2 py-1.5 shadow-[2px_2px_20px_rgba(0,0,0,0.08)] transition-all duration-300 sm:w-[270px] sm:px-2 sm:py-1.5 md:w-[350px] md:p-2 lg:w-[500px]`}
       >
@@ -66,7 +62,7 @@ const ApiProductFetch = () => {
         />
         <Search size={16} className="text-green-100" />
       </div>
-      <div className="flex justify-between px-3 pb-4 pt-8">
+      <div className="flex justify-between pb-4 pt-8">
         <SectionHeading heading="All Products" />
         <div className="flex items-center gap-1 md:gap-2">
           <Grid
@@ -83,38 +79,48 @@ const ApiProductFetch = () => {
           />
         </div>
       </div>
-      <div
-        className={`entireSpace ${
-          gridView
-            ? "grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-            : "flex flex-col md:grid md:grid-cols-2"
-        } gap-4`}
-      >
-        {apiProducts.map((product, index) => {
-          console.log(`${index}: ${product.images}`);
-          return (
-            <Link to={`/dashboard/${product.id}`} key={product.id || index}>
-              <ApiProductItem
+      <div className="min-h-[400px]">
+        {loading ? (
+          <div className="flex h-[400px] w-full items-center justify-center">
+            <div className="text-center">
+              <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-2 border-theme-color border-t-transparent"></div>
+              <p className="text-lg font-semibold text-theme-color">
+                Loading products...
+              </p>
+            </div>
+          </div>
+        ) : apiProducts.length === 0 ? (
+          <div className="flex h-[400px] w-full items-center justify-center">
+            <p className="text-lg font-semibold text-gray-500">
+              No products found
+            </p>
+          </div>
+        ) : (
+          <div
+            className={`entireSpace ${
+              gridView
+                ? "grid grid-cols-2 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+                : "flex flex-col md:grid md:grid-cols-2"
+            } gap-4`}
+          >
+            {apiProducts.map((product, index) => (
+              <Link
+                to={`/dashboard/inventory/${product.id}`}
                 key={product.id || index}
-                id={product.id}
-                images={product.images}
-                productName={product.productName}
-                price={product.price}
-                category={product.category}
-                discountPercentage={product.discountPercentage}
-                description={product.description}
-                discountedPrice={product.discountedPrice}
-                avatar={product.avatar}
-                index={index}
-                favorited={favorited[product.id]}
-                gridView={gridView}
-                cartItems={cartItems}
-                handleAddToCart={() => handleAddToCart(product.id)}
-                handleFavorited={() => handleFavorited(product.id)}
-              />
-            </Link>
-          );
-        })}
+              >
+                <ApiProductItem
+                  {...product}
+                  index={index}
+                  favorited={favorited[product.id]}
+                  gridView={gridView}
+                  cartItems={cartItems}
+                  handleAddToCart={() => handleAddToCart(product.id)}
+                  handleFavorited={() => handleFavorited(product.id)}
+                />
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

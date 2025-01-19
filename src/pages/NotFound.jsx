@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import pageNotFound2 from "../../public/images/pageNotFound.svg";
+import pageNotFound2 from "/images/pageNotFound.svg";
 
 const NotFound = () => {
   return (

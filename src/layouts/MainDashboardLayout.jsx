@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import MainNavbar from "../components/MainNavbar";
 import Sidebar from "../pages/dashboard/Sidebar";
 
-const MainDashboard = () => {
+const MainDashboardLayout = () => {
   return (
     <section className="text-nowrap">
       <MainNavbar />
@@ -18,4 +18,4 @@ const MainDashboard = () => {
   );
 };
 
-export default MainDashboard;
+export default MainDashboardLayout;

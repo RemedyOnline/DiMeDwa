@@ -11,6 +11,7 @@ export default {
         inputBG: "#EAF2EC",
         inputRing: "#0E345A20",
         fadedText: "#b4b4b4",
+        bgColor: "#F1F8F4",
       },
       animation: {
         bounce: "bounce 2s infinite ease-in-out",
