@@ -4,6 +4,9 @@ import {
   LayoutDashboard,
   LogOut,
   PackagePlus,
+  PanelLeftClose,
+  PanelRight,
+  PanelRightClose,
   Settings,
   Store,
 } from "lucide-react";
@@ -19,6 +22,12 @@ const ICON_MAP = {
 
 const Sidebar = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setCollapsed((prev) => !prev);
+    console.log(collapsed);
+  };
 
   const getIcon = (iconName) => {
     const IconComponent = ICON_MAP[iconName];
@@ -30,7 +39,9 @@ const Sidebar = () => {
   };
 
   return (
-    <section className="sticky left-0 top-0 text-nowrap text-theme-color sm:min-w-40 md:min-w-48">
+    <section
+      className={`${collapsed ? "w-12" : "sm:min-w-40 md:min-w-48"} sticky left-0 top-0 text-nowrap text-theme-color transition-all duration-500 ease-in`}
+    >
       <div className="flex min-h-screen flex-col items-start justify-between bg-highlight pb-4 pt-11 sm:pt-12 md:pt-14">
         <div className="flex w-full flex-col">
           {navItems.map((navItem) => (
@@ -132,6 +143,15 @@ const Sidebar = () => {
             <span className="text-xs md:text-sm lg:text-base">@DiMeDwaGh</span>
           </div>
         </div>
+        <button
+          onClick={toggleSidebar}
+          className="flex w-full items-center justify-center gap-2 bg-yellow-200"
+        >
+          <span>{collapsed ? <PanelRightClose /> : <PanelLeftClose />}</span>
+          <span className="bg-fuchsia-200 font-mono text-sm font-semibold">
+            {collapsed ? "" : "Collapse"}
+          </span>
+        </button>
       </div>
     </section>
   );

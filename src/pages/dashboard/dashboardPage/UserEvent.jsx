@@ -59,14 +59,14 @@ const UserEvent = () => {
               key={event.id}
               className="bg-bgColor flex w-full gap-3 rounded-lg px-3 py-2"
             >
-              <p className="flex h-fit w-fit flex-col items-center rounded-md border border-hoverBG border-opacity-50 p-1 text-center font-mono font-semibold">
+              <p className="flex h-fit w-12 flex-col items-center rounded-md border border-hoverBG border-opacity-50 p-1 text-center font-mono font-semibold">
                 <span className="">
                   {event.day}
                   <sup>th</sup>
                 </span>
                 <span>{event.month}</span>
               </p>
-              <div className="bg-fuchsia-200">
+              <div>
                 <p className="text-wrap font-medium">{event.title}</p>
                 <p className="text-wrap text-sm text-hoverBG">
                   {event.details}
