@@ -1,10 +1,8 @@
 /* App.js */
 import { Component } from "react";
 import CanvasJSReact from "@canvasjs/react-charts";
-//var CanvasJSReact = require('@canvasjs/react-charts');
 
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class MonthlySales extends Component {
   render() {
