@@ -1,73 +1,26 @@
 import { VictoryAxis, VictoryChart, VictoryGroup, VictoryLabel, VictoryLegend, VictoryLine, VictoryScatter, VictoryTheme } from "victory";
-import _ from "lodash";
+// import _ from "lodash";
 
-const series = [
+const categories = [
   {
-    name: "Canada",
-    data: [
-      3.9670002, 5.2650003, 6.201,
-      7.8010006, 9.694, 11.214001,
-      11.973001, 12.250001, 12.816001,
-      13.413001, 13.626961, 14.30356,
-      15.295461,
-    ],
+    name: "Electronics",
+    data: [4000, 5200, 4600, 4800, 4600, 6200, 5000, 6400, 6900, 7200, 7500, 8000],
   },
   {
-    name: "Germany",
-    data: [
-      26.903002, 28.712002, 30.979002,
-      33.477, 38.614002, 44.58, 49.435,
-      55.58, 58.721004, 60.742004,
-      62.201004, 63.833004, 66.315,
-    ],
+    name: "Fashion",
+    data: [3000, 3200, 3500, 3600, 3800, 4000, 4200, 3600, 5800, 4800, 5000, 5200],
   },
   {
-    name: "India",
-    data: [
-      13.184001, 16.179, 17.2997,
-      18.4204, 22.465302, 25.08819,
-      28.700441, 32.84846, 35.288105,
-      37.50518, 38.558605, 40.06727,
-      41.929783,
-    ],
+    name: "Groceries",
+    data: [1200, 2500, 3000, 3200, 3400, 4400, 3800, 4000, 4200, 4400, 4600, 4800],
   },
   {
-    name: "United States",
-    data: [
-      39.349697, 45.79497, 59.453304,
-      60.198166, 64.43019, 72.767235,
-      81.502365, 87.83079, 94.66619,
-      103.835556, 118.66354, 133.01929,
-      140.86162,
-    ],
+    name: "Appliances",
+    data: [4000, 4200, 4500, 4600, 4800, 5000, 5200, 5400, 5600, 5800, 6000, 6200],
   },
   {
-    name: "Italy",
-    data: [
-      5.794, 6.918, 8.102, 8.542001,
-      8.683001, 9.137, 9.384001,
-      9.736579, 10.230247, 10.679461,
-      10.870623, 11.253734, 11.779734,
-    ],
-  },
-  {
-    name: "Japan",
-    data: [
-      2.2940001, 2.4190001, 2.562,
-      2.6460001, 2.753, 2.808,
-      3.2470002, 3.4830003, 3.4980001,
-      3.9540002, 4.367, 4.467, 4.577,
-    ],
-  },
-  {
-    name: "Spain",
-    data: [
-      20.693, 21.529001, 22.789001,
-      22.958, 22.925001, 22.943,
-      22.990002, 23.12448, 23.405056,
-      25.590076, 26.819191, 27.907652,
-      29.307837,
-    ],
+    name: "Furniture",
+    data: [3500, 2600, 2000, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600],
   },
 ];
 
@@ -84,64 +37,77 @@ const symbols = [
 
 const SalesbyCategory = () => {
    return (
-     <section className="bg-white">
+      <section className="bg-white text-red-500">
+         <h1>Hello</h1>
     <VictoryChart
       theme={VictoryTheme.clean}
       padding={{
          top: 50,
-         left: 70,
-         right: 50,
+         left: 80,
+         right: 20,
          bottom: 100,
       }}
          >
             <VictoryLabel
-        text="Installed Wind Capacity (GW)"
+        text="Monthly Sales Trends By Categories"
         style={{
           ...VictoryTheme.clean.label,
-          fontSize: 10,
+          fontSize: 12,
         }}
-        dx={28}
-        dy={18}
+        dx={12}
+        dy={1}
       />
       <VictoryLabel
-        text="International Renewable Energy Agency (2023)"
+        text="Total sales (in revenue or units sold) per month for each product category (i.e., Electronics, Fashion, Groceries)."
         style={{
           ...VictoryTheme.clean.label,
           fontSize: 8,
         }}
-        dx={28}
-        dy={30}
+        dx={12}
+        dy={15}
       />
       <VictoryAxis
                // tickValues={Array.from({ length: 7 }, (_, i) => 2010 + i * 2)}
-                 tickValues={_.range(2010, 2024, 2)}
+               //   tickValues={_.range(2010, 2024, 2)}
+                 tickValues={["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ]}
 
-        style={{
+               style={{
+           axis: {
+            stroke: "#ff0000",
+          },
           tickLabels: {
-            fontSize: 8,
+              fontSize: 10,
+             padding: 5
           },
           ticks: {
-            stroke: "#757575",
-            size: 5,
-          },
+            stroke: "#d9d9d9",
+            size: 8,
+           },
+           grid: {
+             stroke: "#d9d9d9"
+            //  stroke: "transparent"
+          }
         }}
       />
       <VictoryAxis
         dependentAxis
-        tickValues={Array.from({ length: 5 }, (_, i) => i * 40)}
-        tickFormat={(value) =>
-          `${value} GW`
-        }
+      //   tickValues={Array.from({ length: 5 }, (_, i) => i * 40)}
+      //   tickFormat={(value) => `${value} GW` }
+        tickFormat={(value) => `GH₵ ${value}` }
         style={{
           axis: {
-            stroke: "transparent",
+            stroke: "#ff0000",
           },
           axisLabel: {
             fontSize: 8,
             padding: 50,
-          },
+           },
+          ticks: {
+            stroke: "#d9d9d9",
+            size: 8,
+           },
           tickLabels: {
-            fontSize: 8,
+            fontSize: 10,
           },
           grid: {
             stroke: "#d9d9d9",
@@ -149,13 +115,13 @@ const SalesbyCategory = () => {
           },
         }}
       />
-      {series.map((s, i) => (
+      {categories.map((category, i) => (
         <VictoryGroup
-          data={s.data.map((d, i) => ({
-            x: i + 2010,
+          data={category.data.map((d, index) => ({
+            x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec" ][index],
             y: d,
           }))}
-          key={s.name}
+          key={category.name}
         >
           <VictoryLine
             style={{
@@ -186,15 +152,15 @@ const SalesbyCategory = () => {
         itemsPerRow={5}
         x={50}
         y={220}
-        data={series.map((s) => ({
+        data={categories.map((s) => ({
           name: s.name,
           symbol: {
             fill: VictoryTheme.clean
               .palette.qualitative[
-              series.indexOf(s)
+              categories.indexOf(s)
             ],
             type: symbols[
-              series.indexOf(s)
+              categories.indexOf(s)
             ],
           },
         }))}
