@@ -123,6 +123,7 @@ const SalesByCategory = () => {
           })
         }
       />
+
       <VictoryChart
         theme={VictoryTheme.clean}
         height={400}
@@ -145,24 +146,6 @@ const SalesByCategory = () => {
         //   />
         // }
       >
-        <VictoryLabel
-          text="Monthly Sales Trends By Categories"
-          style={{
-            ...VictoryTheme.clean.label,
-            fontSize: 12,
-          }}
-          dx={12}
-          dy={1}
-        />
-        <VictoryLabel
-          text="Total sales (in revenue or units sold) per month for each product category (i.e., Electronics, Fashion, Groceries)."
-          style={{
-            ...VictoryTheme.clean.label,
-            fontSize: 8,
-          }}
-          dx={12}
-          dy={15}
-        />
         <VictoryAxis
           // tickValues={Array.from({ length: 7 }, (_, i) => 2010 + i * 2)}
           //   tickValues={_.range(2010, 2024, 2)}

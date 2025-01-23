@@ -47,7 +47,7 @@ const Performance = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMonthIndex((prevIndex) => (prevIndex + 1) % months.length);
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [months.length]);
@@ -55,7 +55,7 @@ const Performance = () => {
   React.useState(() => {
     const setStateInterval = window.setInterval(() => {
       setData(getData());
-    }, 4000);
+    }, 6000);
 
     return () => {
       window.clearInterval(setStateInterval);
@@ -65,6 +65,14 @@ const Performance = () => {
   return (
     <section className="relative bg-white">
       {/* <svg viewBox="0 0 300 300"> */}
+      <div className="absolute m-2 flex flex-col bg-bgColor px-4 py-2 md:m-4 lg:m-5 xl:m-6">
+        <p className="font-mono text-sm font-semibold md:text-base lg:text-lg xl:text-xl">
+          Marketing Campaign Performance
+        </p>
+        <p className="font-mono text-xs md:text-sm lg:text-base xl:text-lg">
+          Montly Marketing Campaign Performance
+        </p>
+      </div>
       <VictoryPie
         //   startAngle={90}
         //   endAngle={-90}
@@ -87,7 +95,7 @@ const Performance = () => {
         text="Incoming Traffic"
       /> */}
       {/* </svg> */}
-      <p className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 bg-bgColor px-2 py-1 font-mono font-semibold md:text-xl">
+      <p className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 bg-bgColor px-4 py-2 font-mono font-semibold md:text-xl">
         {months[currentMonthIndex]}
       </p>
     </section>
