@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MainNavbar = ({ totalAmount, getTotalCartAmount }) => {
   return (
-    <header className="fixed left-0 top-0 z-10 flex w-screen justify-between border-b border-green-300 bg-highlight px-4 py-2 shadow-md sm:px-6 lg:px-8 xl:px-10">
+    <header className="fixed left-0 top-0 z-20 flex w-screen justify-between border-b border-green-300 bg-highlight px-4 py-2 shadow-md sm:px-6 lg:px-8 xl:px-10">
       <div className="group content-center items-center">
         <Link to="/">
           <span className="content-center bg-theme-color px-2 py-1 text-center text-sm font-bold text-white group-hover:bg-hoverBG md:px-3 md:py-2 md:text-base lg:text-lg">

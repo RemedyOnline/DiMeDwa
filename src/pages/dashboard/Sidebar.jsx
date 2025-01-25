@@ -5,7 +5,6 @@ import {
   LogOut,
   PackagePlus,
   PanelLeftClose,
-  PanelRight,
   PanelRightClose,
   Settings,
   Store,
@@ -40,7 +39,7 @@ const Sidebar = () => {
 
   return (
     <section
-      className={`${collapsed ? "w-12" : "sm:min-w-40 md:min-w-48"} sticky left-0 top-0 text-nowrap text-theme-color transition-all duration-500 ease-in`}
+      className={`${collapsed ? "w-12" : "sm:min-w-40 md:min-w-48"} sticky left-0 top-0 z-10 text-nowrap text-theme-color transition-all duration-500 ease-in`}
     >
       <div className="flex min-h-screen flex-col items-start justify-between bg-highlight pt-11 sm:pt-12 md:pt-14">
         <div className="flex w-full flex-col">
@@ -66,7 +65,7 @@ const Sidebar = () => {
         </div>
         <div className="flex w-full flex-col">
           {!collapsed ? (
-            <div className="mx-auto w-full space-y-1 border-y border-hoverBG px-5 py-5 text-gray-500 sm:space-y-2 md:space-y-3">
+            <div className="mx-auto w-full space-y-1 border-t border-hoverBG px-5 py-5 text-gray-500 sm:space-y-2 md:space-y-3">
               <div className="flex gap-1 font-medium hover:cursor-pointer hover:text-theme-color md:gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +160,7 @@ const Sidebar = () => {
 
           <button
             onClick={toggleSidebar}
-            className="group px-6 py-3 hover:bg-theme-color"
+            className="group border-t border-hoverBG px-6 py-3 hover:bg-hoverBG"
           >
             <span
               className={`flex w-full items-center justify-center gap-2 rounded-full ${collapsed ? "" : "border-2 border-theme-color p-1 group-hover:border-white"}`}
