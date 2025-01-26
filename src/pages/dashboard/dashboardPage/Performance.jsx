@@ -76,7 +76,7 @@ const Performance = () => {
       <VictoryPie
         //   startAngle={90}
         //   endAngle={-90}
-        innerRadius={50}
+        innerRadius={60}
         data={data}
         animate={{ duration: 1000 }}
         theme={VictoryTheme.clean}
@@ -95,7 +95,7 @@ const Performance = () => {
         text="Incoming Traffic"
       /> */}
       {/* </svg> */}
-      <p className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 bg-bgColor px-4 py-2 font-mono font-semibold md:text-xl">
+      <p className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 bg-bgColor px-2 py-1 font-mono font-semibold md:text-lg">
         {months[currentMonthIndex]}
       </p>
     </section>
